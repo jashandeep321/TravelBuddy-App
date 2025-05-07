@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View,Text,Switch, StyleSheet,SafeAreaView,TextInput, StatusBar, Image , Button,TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback} from "react-native";
 import { useColorScheme } from "react-native";
 import StackWrapper from './Components/StackWrapper';
+
 // import Icon from 'react-native-vector-icons/FontAwesome';
 
 
@@ -17,6 +18,7 @@ return(
    </>
   <>
   <StackWrapper/>
+  
    {/* <Text>hi</Text> */}
    
    {/* <AllDestinations/> */}

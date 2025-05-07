@@ -15,6 +15,7 @@
     "@react-navigation/stack": "^7.3.1",
     "react": "19.0.0",
     "react-native": "0.79.2",
+    "react-native-auth0": "^4.6.0",
     "react-native-gesture-handler": "^2.25.0",
     "react-native-loader-kit": "^2.0.8",
     "react-native-safe-area-context": "^5.4.0",

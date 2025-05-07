@@ -10,9 +10,8 @@ const StackWrapper = () => {
   return (
     <NavigationContainer>
         <Stack.Navigator>
-            {/* <Stack.Screen component={Login} name='Login'/> */}
+            <Stack.Screen component={Login} name='Login'/>
             <Stack.Screen component={AllDestinations} name='Destinations'/>
-            
         </Stack.Navigator>
     </NavigationContainer>
     
