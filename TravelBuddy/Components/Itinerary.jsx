@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-const GEMINI_API_KEY = 'AIzaSyDGTWVqhotHfUgck1jzh5V2tuibdgqhvV4';
+// // const GEMINI_API_KEY = 'AIzaSyDGTWVqhotHfUgck1jzh5V2tuibdgqhvV4';
+const GEMINI_API_KEY = 'AIzaSyCVMqmxhCgnSmgvLys8z7V2K-0WK5XJP1M';
 
 export default function Itinerary() {
   const [place, setPlace] = useState('');
@@ -20,14 +21,13 @@ export default function Itinerary() {
 
     const prompt = `Create a concise travel itinerary for ${days} days in ${place}. 
     Focus on 3 key activities per day (morning, afternoon, evening). 
-    Keep each activity under 15 words. 
-    Format as: "Day X: [Title]\n- Time: [Activity]\n- Time: [Activity]\n- Time: [Activity]"
-    Preferences: ${preferences || 'none'}.`;
-
+     Keep each activity not very long. 
+     Format as: "Day X: [Title]\n- Time: [Activity]\n- Time: [Activity]\n- Time: [Activity]"
+     Preferences: ${preferences || 'none'}.`;
     try {
       setLoading(true);
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
         {
           contents: [{ parts: [{ text: prompt }] }]
         },
@@ -56,7 +56,7 @@ export default function Itinerary() {
     return days.map(dayText => {
       const lines = dayText.split('\n');
       return {
-        day: lines[0].replace('Day', 'Day').replace(':', ':'),
+        day: lines[0],
         activities: lines.slice(1).filter(line => line.startsWith('-'))
       };
     });
@@ -66,32 +66,32 @@ export default function Itinerary() {
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.scroll}>
         <Text style={styles.header}>Travel Itinerary</Text>
-        
-        <TextInput 
-          style={styles.input} 
-          placeholder="Place (e.g., Paris)" 
-          value={place} 
-          onChangeText={setPlace} 
+
+        <TextInput
+          style={styles.input}
+          placeholder="Place (e.g., Tokyo)"
+          value={place}
+          onChangeText={setPlace}
         />
-        
-        <TextInput 
-          style={styles.input} 
-          placeholder="Days (e.g., 3)" 
-          value={days} 
-          onChangeText={setDays} 
-          keyboardType="numeric" 
+
+        <TextInput
+          style={styles.input}
+          placeholder="Days (e.g., 3)"
+          value={days}
+          onChangeText={setDays}
+          keyboardType="numeric"
         />
-        
-        <TextInput 
-          style={styles.input} 
-          placeholder="Preferences (e.g., food, museums)" 
-          value={preferences} 
-          onChangeText={setPreferences} 
+
+        <TextInput
+          style={styles.input}
+          placeholder="Preferences (e.g., food, museums)"
+          value={preferences}
+          onChangeText={setPreferences}
         />
-        
-        <TouchableOpacity 
-          style={[styles.button, loading && styles.disabledButton]} 
-          onPress={generateItinerary} 
+
+        <TouchableOpacity
+          style={[styles.button, loading && styles.disabledButton]}
+          onPress={generateItinerary}
           disabled={loading}
         >
           <Text style={styles.buttonText}>
@@ -119,34 +119,34 @@ export default function Itinerary() {
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    backgroundColor: '#f8f9fa' 
+  container: {
+    flex: 1,
+    backgroundColor: '#f8f9fa'
   },
-  scroll: { 
+  scroll: {
     padding: 20,
-    paddingBottom: 40 
+    paddingBottom: 40
   },
-  header: { 
-    fontSize: 24, 
-    fontWeight: 'bold', 
-    marginBottom: 25, 
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 25,
     textAlign: 'center',
     color: '#2c3e50'
   },
-  input: { 
-    backgroundColor: 'white', 
-    padding: 15, 
-    borderRadius: 10, 
-    marginBottom: 15, 
+  input: {
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 15,
     fontSize: 16,
     borderWidth: 1,
     borderColor: '#dfe6e9'
   },
-  button: { 
-    backgroundColor: '#3498db', 
-    padding: 15, 
-    borderRadius: 10, 
+  button: {
+    backgroundColor: '#3498db',
+    padding: 15,
+    borderRadius: 10,
     alignItems: 'center',
     marginVertical: 15,
     shadowColor: '#000',
@@ -158,10 +158,10 @@ const styles = StyleSheet.create({
   disabledButton: {
     backgroundColor: '#bdc3c7'
   },
-  buttonText: { 
-    color: 'white', 
+  buttonText: {
+    color: 'white',
     fontWeight: '600',
-    fontSize: 16 
+    fontSize: 16
   },
   itineraryContainer: {
     marginTop: 20,
@@ -199,3 +199,4 @@ const styles = StyleSheet.create({
     lineHeight: 20
   }
 });
+
