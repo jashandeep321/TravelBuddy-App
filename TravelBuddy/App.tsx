@@ -10,20 +10,9 @@ import Welcome from './Components/Welcome';
 const App=()=>{
 // const [switchState,setSwitchState]=useState(true);
 return(
-  <>
-   <>
-   {/* <Login/> */}
-  {/* // value={switchState} onValueChange={value => setSwitchState(value)}
-  // />
-  // <April17/> */}
-   </>
+  
   <>
   <StackWrapper/>
-  
-   {/* <Text>hi</Text> */}
-   
-   {/* <AllDestinations/> */}
-  </>
   </>
 );
 }
