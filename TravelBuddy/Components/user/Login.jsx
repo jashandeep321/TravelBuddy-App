@@ -18,8 +18,16 @@ import { useNavigation } from '@react-navigation/native'
 
 import { TouchableOpacity, Text as RNText } from 'react-native';
 import {SafeAreaView } from 'react-native';
+import Auth0Login from './Auth0Login';
 
-const image = {uri: 'https://res.cloudinary.com/dzyb93kms/image/upload/v1746185447/WhatsApp_Image_2025-05-02_at_4.59.44_PM_qx7iei.jpg'};
+// const image = {uri: 'https://res.cloudinary.com/dzyb93kms/image/upload/v1746185447/WhatsApp_Image_2025-05-02_at_4.59.44_PM_qx7iei.jpg'};
+
+const image = {
+  uri: 'https://i.pinimg.com/736x/9e/d9/2b/9ed92bb01e9e323528386304eb5dc9a0.jpg',
+};
+
+
+
 
 const Login = () => {
   const navigation = useNavigation();
@@ -30,28 +38,27 @@ const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-      <View style={styles.loginBox}>
         <Text style={styles.title}>Login</Text>
+        <View style={styles.loginBox}>
+          <TextInput
+            style={styles.input}
+            onChangeText={setEmail}
+            value={email}
+            placeholder="enter your email"
+            placeholderTextColor="#ccc"
+            required
+          />
 
-        <TextInput
-          style={styles.input}
-          onChangeText={setEmail}
-          value={email}
-          placeholder="JohnDoe@gmail.com"
-          placeholderTextColor="#ccc"
-          required
-        />
-
-        <TextInput
-          style={styles.input}
-          onChangeText={setPassword}
-          value={password}
-          placeholder="Password"
-          placeholderTextColor="#ccc"
-          secureTextEntry
-          required
-        />
-        {/* <View style={styles.buttonContainer}>
+          <TextInput
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+            placeholder="password"
+            placeholderTextColor="#ccc"
+            secureTextEntry
+            required
+          />
+          {/* <View style={styles.buttonContainer}>
             <Button
               title="Login"
               color="#024F55"
@@ -59,17 +66,21 @@ const Login = () => {
             />
           </View> */}
 
-<TouchableOpacity
- onPress={() => navigation.navigate('Destinations')}
- style={styles.loginButton} 
-//  onPress={() => Alert.alert('Login Successful.')}
- >
-  <RNText style={styles.loginButtonText}>
-    Login
-    </RNText>
-</TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Destinations')}
+            style={styles.loginButton}
+            //  onPress={() => Alert.alert('Login Successful.')}
+          >
+            <RNText style={styles.loginButtonText}>Login</RNText>
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.titleBottom}>OR</Text>
+        <Auth0Login/>
+        {/* <TouchableOpacity
+        
+        >
 
-          </View>
+        </TouchableOpacity> */}
       </ImageBackground>
     </SafeAreaView>
   );
@@ -90,11 +101,20 @@ const styles = StyleSheet.create({
   loginBox: {
     width: '90%',
     // height:'50%',
+    paddingTop: 40,
     backgroundColor: 'rgba(255, 255, 255, 0.15)',
     borderRadius: 16,
     padding: 30,
     alignItems: 'center',
     zIndex: 1,
+  },
+  titleBottom: {
+    marginTop: 20,
+    marginBottom: 20,
+    color: 'white',
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginBottom: 50,
   },
   title: {
     color: 'white',
@@ -104,12 +124,12 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: '#000000aa',
-    borderRadius: 8,
+    borderRadius: 12,
     width: '100%',
     height: 50,
     paddingHorizontal: 15,
-    marginVertical: 20,
-    fontSize: 18,
+    marginVertical: 15,
+    fontSize: 16,
     color: '#fff',
   },
   // buttonContainer: {
@@ -122,20 +142,19 @@ const styles = StyleSheet.create({
 
   loginButton: {
     backgroundColor: '#024F55',
-    height: 55,                // Increased height
-    borderRadius: 12,          // More rounded
+    height: 55, // Increased height
+    borderRadius: 12, // More rounded
     justifyContent: 'center',
     alignItems: 'center',
-    width: '100%',
-    marginTop: 30,
+    width: '40%',
+    marginTop: 25,
   },
-  
+
   loginButtonText: {
-    color: '#fff',
-    fontSize: 18,
+    color: '#EFECCD',
+    fontSize: 16,
     fontWeight: 'bold',
-  }
-  
+  },
 });
 
 export default Login;

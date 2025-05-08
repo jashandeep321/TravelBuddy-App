@@ -43,12 +43,19 @@ const Stack = createStackNavigator();
 const StackWrapper = () => {
   return (
     <NavigationContainer>
+<<<<<<< HEAD
       <Stack.Navigator initialRouteName="Welcome" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Nav} screenOptions={{ headerShown: false }} />
         <Stack.Screen name="AllDestrinations" component={AllDestinations} />
       </Stack.Navigator>
+=======
+        <Stack.Navigator>
+            <Stack.Screen component={Login} name='Login'/>
+            <Stack.Screen component={AllDestinations} name='Destinations'/>
+        </Stack.Navigator>
+>>>>>>> 3a088150e68d23c85bd83278eb45ccbff672cf8b
     </NavigationContainer>
   );
 };
