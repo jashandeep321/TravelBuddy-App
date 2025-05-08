@@ -207,8 +207,7 @@ import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-// const GEMINI_API_KEY = 'AIzaSyDGTWVqhotHfUgck1jzh5V2tuibdgqhvV4';
-const GEMINI_API_KEY = 'AIzaSyCVMqmxhCgnSmgvLys8z7V2K-0WK5XJP1M';
+const GEMINI_API_KEY = 'AIzaSyDGTWVqhotHfUgck1jzh5V2tuibdgqhvV4';
 
 export default function Itinerary() {
   const [place, setPlace] = useState('');
@@ -226,9 +225,10 @@ export default function Itinerary() {
 
     const prompt = `Create a concise travel itinerary for ${days} days in ${place}. 
     Focus on 3 key activities per day (morning, afternoon, evening). 
-     Keep each activity under 30 words. 
-     Format as: "Day X: [Title]\n- Time: [Activity]\n- Time: [Activity]\n- Time: [Activity]"
-     Preferences: ${preferences || 'none'}.`;
+    Keep each activity under 15 words. 
+    Format as: "Day X: [Title]\n- Time: [Activity]\n- Time: [Activity]\n- Time: [Activity]"
+    Preferences: ${preferences || 'none'}.`;
+
     try {
       setLoading(true);
       const response = await axios.post(
