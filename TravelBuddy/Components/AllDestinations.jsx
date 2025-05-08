@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Loader from "./Loader";
 
 
-const April21=()=>{
+const AllDestinations=()=>{
    const [destinations,setDestinations]=useState([]);
    const [loading, setLoading] = useState(true);
 
@@ -93,7 +93,7 @@ return(
 
 }
 
-export default April21;
+export default AllDestinations;
 
 const styles=StyleSheet.create({
     viewStyle:{
