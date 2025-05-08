@@ -41,6 +41,7 @@ import Welcome from './Welcome';
 import Login from './user/Login';
 import AllDestinations from './AllDestinations';
 import Nav from './Tabbar/Nav';
+import Itinerary from './Itinerary';
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,7 @@ const StackWrapper = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Nav} />
         <Stack.Screen name="AllDestinations" component={AllDestinations} />
+        <Stack.Screen name="Itinerary" component={Itinerary} />
       </Stack.Navigator>
     </NavigationContainer>
   );
