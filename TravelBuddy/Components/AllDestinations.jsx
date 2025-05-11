@@ -1,7 +1,7 @@
 import { Image, StyleSheet,Text, View, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import Loader from "./Loader";
-
+import Nav from "./Tabbar/Nav"
 
 const AllDestinations=()=>{
    const [destinations,setDestinations]=useState([]);
