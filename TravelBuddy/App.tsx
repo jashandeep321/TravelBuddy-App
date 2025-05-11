@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { View,Text,Switch, StyleSheet,SafeAreaView,TextInput, StatusBar, Image , Button,TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback} from "react-native";
+import { useColorScheme } from "react-native";
 import StackWrapper from './Components/StackWrapper';
 import { Auth0Provider } from 'react-native-auth0';
 
@@ -15,10 +17,3 @@ return(
 }
 
 export default App;
-
-
-// //cd android     ./gradlew clean
-// // ./gradlew assemblerelease
-
-
-
