@@ -349,7 +349,7 @@ const styles = StyleSheet.create({
     borderColor: '#dfe6e9'
   },
   button: {
-    backgroundColor: '#3498db',
+    backgroundColor: '#204040ff',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -361,7 +361,7 @@ const styles = StyleSheet.create({
     elevation: 3
   },
   disabledButton: {
-    backgroundColor: '#bdc3c7'
+    backgroundColor: '#B2D1B4ff7'
   },
   buttonText: {
     color: 'white',
@@ -385,7 +385,7 @@ const styles = StyleSheet.create({
   dayHeader: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#2c3e50',
+    color: '#204040ff',
     marginBottom: 12,
     borderBottomWidth: 1,
     borderBottomColor: '#dfe6e9',
@@ -396,7 +396,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     paddingLeft: 8,
     borderLeftWidth: 3,
-    borderLeftColor: '#3498db'
+    borderLeftColor: '#B2D1B4f'
   },
   activityText: {
     fontSize: 14,

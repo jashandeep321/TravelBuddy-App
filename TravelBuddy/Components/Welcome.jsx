@@ -21,7 +21,7 @@ const Welcome = ({ navigation }) => {
 
         <TouchableOpacity 
           style={styles.button} 
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Nav')}
         >
           <Text style={styles.buttonText}>Go to Home</Text>
         </TouchableOpacity>

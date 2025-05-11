@@ -3,7 +3,7 @@ import Home from '../Home';
 import Itinerary from '../Itinerary';
 import AllDestinations from '../AllDestinations';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import Profile from '../user/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -32,7 +32,7 @@ function Nav() {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Destinations" component={AllDestinations} />
       <Tab.Screen name="Itinerary" component={Itinerary} />
-      {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 }
