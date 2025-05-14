@@ -57,7 +57,7 @@ const DestinationSec = () => {
           style={styles.arrowCard}
           onPress={() => navigation.navigate('AllDestinations')}
         >
-          <Entypo name="chevron-thin-right" size={40} color="#555" />
+          <Entypo name="chevron-thin-right" size={40} color="#204040ff" />
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -76,11 +76,12 @@ const styles = StyleSheet.create({
     top: '30%', 
   },
   title: {
-    fontSize: 24,
+    fontSize: 25,
     fontWeight: 'bold',
     paddingHorizontal: 15,
     paddingBottom:10,
     marginBottom: 10,
+    color:'#204040ff',
   },
   card: {
     width: 200,
