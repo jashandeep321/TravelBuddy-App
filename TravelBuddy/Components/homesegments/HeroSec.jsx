@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   heroText: {
-    color: '#fff',
-    fontSize: 32,
+    color: 'white',
+    fontSize: 35,
     fontWeight: 'bold',
     textAlign: 'center',
     paddingBottom: 30,
   },
   text: {
-    color: '#fff',
+    color: 'white',
     fontSize: 20,
     // fontWeight: 'bold',
     textAlign: 'center',
