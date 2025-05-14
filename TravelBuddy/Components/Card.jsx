@@ -32,17 +32,20 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 200,
+    height: 250,
     borderRadius: 10,
   },
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
     marginTop: 10,
+    marginLeft: 5,
   },
   subtitle: {
     fontSize: 14,
     color: 'gray',
+     marginLeft: 5,
+     marginTop: 3,
   },
 });
 
