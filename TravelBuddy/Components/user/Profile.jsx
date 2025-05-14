@@ -141,16 +141,21 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   logoutButton: {
-    backgroundColor: '#28bf6f',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 10,
-    marginTop: 20,
+    backgroundColor: '#204040ff', 
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    width: '40%',
+    marginBottom: 15,  
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5, 
+    borderColor:'#335C58ff',
+    borderWidth: 1,
   },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
+  buttonText:{
+    fontSize:20,
+    color:'beige'
   },
 });
 
