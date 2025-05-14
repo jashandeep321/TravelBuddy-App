@@ -6,6 +6,7 @@ import Login from './user/Login';
 import AllDestinations from './AllDestinations';
 import Nav from './Tabbar/Nav';
 import Itinerary from './Itinerary';
+import Auth0Login from './user/Auth0Login';
 
 const Stack = createStackNavigator();
 
@@ -24,3 +25,4 @@ const StackWrapper = () => {
 };
 
 export default StackWrapper;
+

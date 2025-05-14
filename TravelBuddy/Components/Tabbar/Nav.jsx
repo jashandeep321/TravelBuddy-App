@@ -21,6 +21,8 @@ function Nav() {
             iconName = focused ? 'map' : 'map-outline';
           } else if (route.name === 'Itinerary') {
             iconName = focused ? 'calendar' : 'calendar-outline';
+          }else if (route.name === 'Profile') {
+            iconName = focused ? 'person' : 'person-outline';
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
