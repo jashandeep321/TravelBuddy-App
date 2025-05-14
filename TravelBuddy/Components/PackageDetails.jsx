@@ -39,7 +39,7 @@ function PackageDetailsScreen({ route }) {
     }
   };
   fetchPackage();
-}, [slug]);
+}, [slug]); 
 
   const getTravelIcon = (mode) => {
     const m = mode?.toLowerCase();
