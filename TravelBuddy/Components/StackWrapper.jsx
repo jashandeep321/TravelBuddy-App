@@ -6,8 +6,6 @@ import Auth0Login from './user/Auth0Login';
 import AllDestinations from './AllDestinations';
 import Nav from './Tabbar/Nav';
 import Itinerary from './Itinerary';
-import Slug from './Slug';
-import Packages from './Packages';
 
 const Stack = createStackNavigator();
 
@@ -22,9 +20,6 @@ const StackWrapper = () => {
         <Stack.Screen name="Nav" component={Nav} />
         <Stack.Screen name="AllDestinations" component={AllDestinations} />
         <Stack.Screen name="Itinerary" component={Itinerary} />
-        <Stack.Screen name="Packages" component={Packages} />
-        {/* <Stack.Screen name="Home" component={Home} /> */}
-
       </Stack.Navigator>
     </NavigationContainer>
   );
