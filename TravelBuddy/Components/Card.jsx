@@ -57,7 +57,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-na
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome'; // Icon for the wishlist button
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import Slug from './Slug';
 const Card = ({ destination }) => {
   const navigation = useNavigation();
   const [wishlist, setWishlist] = useState([]);

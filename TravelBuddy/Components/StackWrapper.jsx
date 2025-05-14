@@ -10,7 +10,7 @@ import Auth0Login from './user/Auth0Login';
 import Wishlist from './Wishlist';
 import Packages from './Packages';
 import PackageDetailsScreen from './PackageDetails';
-
+import Slug from './Slug';
 const Stack = createStackNavigator();
 
 const StackWrapper = () => {
@@ -27,6 +27,7 @@ const StackWrapper = () => {
         <Stack.Screen name="Wishlist" component={Wishlist} />
         <Stack.Screen name="Packages" component={Packages} />
         <Stack.Screen name="PackageDetails" component={PackageDetailsScreen} />
+                <Stack.Screen name="Slug" component={Slug} />
       </Stack.Navigator>
     </NavigationContainer>
   );
