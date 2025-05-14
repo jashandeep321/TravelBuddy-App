@@ -275,6 +275,7 @@ export default function Itinerary() {
         <TextInput
           style={styles.input}
           placeholder="Place (e.g., Tokyo)"
+          placeholderTextColor="black"
           value={place}
           onChangeText={setPlace}
         />
@@ -282,6 +283,7 @@ export default function Itinerary() {
         <TextInput
           style={styles.input}
           placeholder="Days (e.g., 3)"
+          placeholderTextColor="black"
           value={days}
           onChangeText={setDays}
           keyboardType="numeric"
@@ -290,6 +292,7 @@ export default function Itinerary() {
         <TextInput
           style={styles.input}
           placeholder="Preferences (e.g., food, museums)"
+          placeholderTextColor="black"
           value={preferences}
           onChangeText={setPreferences}
         />
