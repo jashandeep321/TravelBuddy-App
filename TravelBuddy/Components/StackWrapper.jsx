@@ -6,6 +6,10 @@ import Login from './user/Login';
 import AllDestinations from './AllDestinations';
 import Nav from './Tabbar/Nav';
 import Itinerary from './Itinerary';
+import Auth0Login from './user/Auth0Login';
+import Wishlist from './Wishlist';
+import Packages from './Packages';
+import PackageDetailsScreen from './PackageDetails';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +24,9 @@ const StackWrapper = () => {
         <Stack.Screen name="Nav" component={Nav} />
         <Stack.Screen name="AllDestinations" component={AllDestinations} />
         <Stack.Screen name="Itinerary" component={Itinerary} />
+        <Stack.Screen name="Wishlist" component={Wishlist} />
+        <Stack.Screen name="Packages" component={Packages} />
+        <Stack.Screen name="PackageDetails" component={PackageDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

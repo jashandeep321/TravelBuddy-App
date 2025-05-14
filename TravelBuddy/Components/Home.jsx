@@ -5,6 +5,8 @@ import Login from './user/Login'
 import AllDestinations from "./AllDestinations";
 import { TouchableOpacity, Text as RNText } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
+import { Button } from 'react-native';
+
 
 const Home = () => {
 
@@ -12,8 +14,9 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-
+      <Button title="Go to Wishlist" onPress={() => navigation.navigate('Wishlist')} />
       <Text>Home</Text>
+         <Button title="Go to Packages" onPress={() => navigation.navigate('Packages')} />
     </View>
   );
 };

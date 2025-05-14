@@ -140,10 +140,12 @@ import {
   FlatList,
   ScrollView,
   Image,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from 'react-native';
 import LoaderKit from 'react-native-loader-kit';
 import * as Animatable from 'react-native-animatable';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
@@ -151,6 +153,7 @@ const Packages = () => {
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
 
+   const navigation = useNavigation();
   useEffect(() => {
     fetch('https://travelbuddy-1-4ja0.onrender.com/TravelBuddy/packages')
       .then(res => res.json())
@@ -169,26 +172,30 @@ const Packages = () => {
       item.images?.sightseeing?.[0] ||
       item.images?.hotel?.[0] ||
       item.images?.restaurant?.[0] ||
-      item.image || // fallback to "image" field if others not found
+      item.image ||
       'https://via.placeholder.com/300x200.png?text=No+Image';
 
     return (
-      <Animatable.View
-        animation="fadeInUp"
-        duration={600}
-        delay={index * 150}
-        useNativeDriver
-        style={styles.card}
+      <TouchableOpacity 
+        onPress={() => navigation.navigate('PackageDetails', { slug: item.slug || item._id })}
       >
-        <Image source={{ uri: firstImage }} style={styles.image} />
-        <Text style={styles.title}>{item.title || 'Untitled Package'}</Text>
-        <Text style={styles.description}>{item.description || 'No description available'}</Text>
-        <Text style={styles.info}>Duration: {item.duration || 'N/A'}</Text>
-        <Text style={styles.info}>Price: ₹{item.price || 'N/A'}</Text>
-       
-      </Animatable.View>
+        <Animatable.View
+          animation="fadeInUp"
+          duration={600}
+          delay={index * 150}
+          useNativeDriver
+          style={styles.card}
+        >
+          <Image source={{ uri: firstImage }} style={styles.image} />
+          <Text style={styles.title}>{item.title || 'Untitled Package'}</Text>
+          <Text style={styles.description}>{item.description || 'No description available'}</Text>
+          <Text style={styles.info}>Duration: {item.duration || 'N/A'}</Text>
+          <Text style={styles.info}>Price: ₹{item.price || 'N/A'}</Text>
+        </Animatable.View>
+      </TouchableOpacity>
     );
   };
+
 
   if (loading) {
     return (
