@@ -3,100 +3,105 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
   Image,
-  FlatList,
+  ScrollView,
+  StatusBar,
 } from 'react-native';
 
 const Slug = ({route}) => {
   const {destination} = route.params;
 
-  return (
-    <ScrollView
-      contentContainerStyle={styles.container}
-      nestedScrollEnabled={true}>
-      {/* Banner Image */}
-      <Image
-        source={{uri: destination.bannerImage}}
-        style={styles.bannerImage}
-      />
+  // Function to render array items as simple list
+  const renderList = items => {
+    return items.map((item, index) => (
+      <Text key={index.toString()} style={styles.listItem}>
+        • {item}
+      </Text>
+    ));
+  };
 
-      {/* Title */}
-      <Text style={styles.title}>{destination.name}</Text>
-      <Text style={styles.subtitle}>{destination.location}</Text>
-
-      {/* Description */}
-      <Text style={styles.sectionTitle}>About</Text>
-      <Text style={styles.description}>{destination.description}</Text>
-
-      {/* Best Time to Visit */}
-      <View style={styles.infoContainer}>
-        <Text style={styles.infoLabel}>Best Time to Visit:</Text>
-        <Text style={styles.infoText}>{destination.bestTimeToVisit}</Text>
-      </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.infoLabel}>When Not to Visit:</Text>
-        <Text style={styles.infoText}>{destination.whenNotToVisit}</Text>
-      </View>
-
-      {/* Places to Visit */}
-      <Text style={styles.sectionTitle}>Popular Places to Visit</Text>
-      <FlatList
-        data={destination.placesToVisit}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => <Text style={styles.listItem}>• {item}</Text>}
-      />
-
-      {/* Food to Try */}
-      <Text style={styles.sectionTitle}>Must-Try Local Foods</Text>
-      <FlatList
-        data={destination.foodToTry}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => <Text style={styles.listItem}>• {item}</Text>}
-      />
-
-      {/* Images */}
-      <Text style={styles.sectionTitle}>Gallery</Text>
-      <FlatList
-        data={destination.baseImages}
-        keyExtractor={(item, index) => index.toString()}
+  // Function to render image gallery horizontally
+  const renderGallery = images => {
+    return (
+      <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        renderItem={({item}) => (
-          <Image source={{uri: item}} style={styles.galleryImage} />
-        )}
-      />
+        style={{maxHeight: 200}}>
+        {images.map((item, index) => (
+          <Image
+            key={index.toString()}
+            source={{uri: item}}
+            style={styles.galleryImage}
+          />
+        ))}
+      </ScrollView>
+    );
+  };
 
-      {/* Transportation */}
-      <Text style={styles.sectionTitle}>Transportation</Text>
-      <FlatList
-        data={destination.transportation}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => <Text style={styles.listItem}>• {item}</Text>}
-      />
-
-      {/* Ratings */}
-      <View style={styles.infoContainer}>
-        <Text style={styles.infoLabel}>Average Price Range:</Text>
-        <Text style={styles.infoText}>{destination.price}</Text>
-      </View>
-      <View style={styles.infoContainer}>
-        <Text style={styles.infoLabel}>Ratings:</Text>
-        <Text style={styles.infoText}>{destination.stars} ★</Text>
+  return (
+    <ScrollView style={styles.outerContainer}>
+      <View style={styles.container}>
+        {/* Banner Image */}
+        <Image
+          source={{uri: destination.bannerImage}}
+          style={styles.bannerImage}
+        />
+        {/* Title */}
+        <Text style={styles.title}>{destination.name}</Text>
+        <Text style={styles.subtitle}>{destination.location}</Text>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>
+            Rated {destination.stars || 'N/A'} ★
+          </Text>
+        </View>
+        {/* Description */}
+        <Text style={styles.sectionTitle}>About</Text>
+        <Text style={styles.description}>{destination.description}</Text>
+        {/* Best Time to Visit */}
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>Best Time to Visit:</Text>
+        </View>
+        <Text style={styles.infoText}>{destination.bestTimeToVisit}</Text>
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>When Not to Visit:</Text>
+        </View>
+        <Text style={styles.infoText}>{destination.whenNotToVisit}</Text>
+        {/* Places to Visit */}
+        <Text style={styles.sectionTitle}>Popular Places to Visit</Text>
+        {renderList(destination.placesToVisit)}
+        {/* Food to Try */}
+        <Text style={styles.sectionTitle}>Must-Try Local Foods</Text>
+        {renderList(destination.foodToTry)}
+        {/* Images */}
+        <Text style={styles.sectionTitle}>Gallery</Text>
+        {renderGallery(destination.baseImages)}
+        {/* Transportation */}
+        <Text style={styles.sectionTitle}>Transportation</Text>
+        {renderList(destination.transportation)}
+        {/* Ratings */}
+        <View style={styles.infoContainer}>
+          <Text style={styles.infoLabel}>Average Price Range:</Text>
+          <Text style={styles.infoText}>{destination.price}</Text>
+        </View>
       </View>
     </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
+  outerContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
   container: {
-    flexGrow: 1,
-    padding: 20,
+    marginTop: StatusBar.currentHeight,
+    paddingHorizontal: 15,
+    paddingBottom: 20,
     backgroundColor: 'white',
   },
   bannerImage: {
     width: '100%',
-    height: 200,
+    height: 300,
     borderRadius: 10,
     marginBottom: 20,
   },
@@ -141,8 +146,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   galleryImage: {
-    width: 150,
-    height: 100,
+    width: 300,
+    height: 200,
     borderRadius: 8,
     marginRight: 10,
   },
