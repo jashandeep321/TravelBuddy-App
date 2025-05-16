@@ -55,7 +55,7 @@ const DestinationSec = () => {
         ))}
          <TouchableOpacity
           style={styles.arrowCard}
-          onPress={() => navigation.navigate('AllDestinations')}
+          onPress={() => navigation.navigate('Destinations')}
         >
           <Entypo name="chevron-thin-right" size={40} color="#204040ff" />
         </TouchableOpacity>
