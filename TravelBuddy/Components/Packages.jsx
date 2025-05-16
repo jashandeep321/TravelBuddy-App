@@ -154,6 +154,7 @@ const Packages = () => {
   const [loading, setLoading] = useState(true);
 
    const navigation = useNavigation();
+   
   useEffect(() => {
     fetch('https://travelbuddy-1-4ja0.onrender.com/TravelBuddy/packages')
       .then(res => res.json())
