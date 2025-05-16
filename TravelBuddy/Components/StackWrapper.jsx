@@ -1,6 +1,6 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Welcome from './Welcome';
 import Login from './user/Login';
 import AllDestinations from './AllDestinations';
@@ -18,7 +18,7 @@ const StackWrapper = () => {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="Auth0Login"
-        screenOptions={{headerShown: false}}>
+        screenOptions={{ headerShown: false }}>
         {/* <Stack.Screen name="Welcome" component={Welcome} /> */}
         <Stack.Screen name="Auth0Login" component={Auth0Login} />
         <Stack.Screen name="Nav" component={Nav} />
@@ -27,7 +27,7 @@ const StackWrapper = () => {
         <Stack.Screen name="Wishlist" component={Wishlist} />
         <Stack.Screen name="Packages" component={Packages} />
         <Stack.Screen name="PackageDetails" component={PackageDetailsScreen} />
-                <Stack.Screen name="Slug" component={Slug} />
+        <Stack.Screen name="Slug" component={Slug} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -87,23 +87,39 @@ const AllDestinations = () => {
     loadWishlist();
   }, []);
 
-  const addToWishlist = async (destination) => {
-  // Log wishlist and destination to debug
-  console.log('Current Wishlist:', wishlist);
-  console.log('Trying to add destination:', destination);
+ const addToWishlist = async (destination) => {
+  try {
+    const savedWishlist = await AsyncStorage.getItem('wishlist');
+    const wishlistArray = savedWishlist ? JSON.parse(savedWishlist) : [];
 
-  // Check if destination is already in the wishlist
-  if (wishlist.find((item) => item.id === destination.id)) {
-    alert('This destination is already in your wishlist.');
-    return;
+    const itemId = destination._id || destination.id;
+
+    if (!itemId) {
+      console.warn('Trying to add to wishlist without an ID:', destination);
+      return; // skip adding item without an ID
+    }
+
+    // Check if item already exists
+    const alreadyExists = wishlistArray.some(item => item.id === itemId);
+
+    if (!alreadyExists) {
+      const newWishlist = [
+        ...wishlistArray,
+        {
+          id: itemId,
+          name: destination.name,
+          image: destination.bannerImage || destination.image,
+          location: destination.location,
+          // other fields if needed
+        },
+      ];
+
+      await AsyncStorage.setItem('wishlist', JSON.stringify(newWishlist));
+      setWishlist(newWishlist);
+    }
+  } catch (error) {
+    console.error('Failed to add to wishlist', error);
   }
-
-  const updatedWishlist = [...wishlist, destination];
-  setWishlist(updatedWishlist);
-
-  // Save updated wishlist to AsyncStorage
-  await AsyncStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-  alert('This destination has been added to your wishlist!');
 };
 
 
