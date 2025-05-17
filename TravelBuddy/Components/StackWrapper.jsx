@@ -11,6 +11,9 @@ import Wishlist from './Wishlist';
 import Packages from './Packages';
 import PackageDetailsScreen from './PackageDetails';
 import Slug from './Slug';
+import Cart from './Cart';
+
+
 const Stack = createStackNavigator();
 
 const StackWrapper = () => {
@@ -28,6 +31,7 @@ const StackWrapper = () => {
         <Stack.Screen name="Packages" component={Packages} />
         <Stack.Screen name="PackageDetails" component={PackageDetailsScreen} />
         <Stack.Screen name="Slug" component={Slug} />
+         <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
   );

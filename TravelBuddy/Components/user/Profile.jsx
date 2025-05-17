@@ -223,6 +223,13 @@ const ProfileScreen = () => {
       >
         <Text style={styles.buttonText}>Go to Wishlist</Text>
       </TouchableOpacity>
+
+       <TouchableOpacity
+        style={styles.cartButton}
+        onPress={() => navigation.navigate('Cart')}
+      >
+        <Text style={styles.buttonText}>Go to Cart</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -256,6 +263,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   wishlistButton: {
+    backgroundColor: '#3bb5b0',
+    paddingVertical: 15,
+    paddingHorizontal: 60,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 6,
+    elevation: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+   cartButton: {
+    marginTop:40,
     backgroundColor: '#3bb5b0',
     paddingVertical: 15,
     paddingHorizontal: 60,

@@ -158,6 +158,79 @@
 // export default Card;
 
 
+// import React, { useState, useEffect } from 'react';
+// import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// const Card = ({ destination }) => {
+//   const navigation = useNavigation();
+//   const [isInWishlist, setIsInWishlist] = useState(false);
+
+//   // Check if item is in wishlist on load
+//   useEffect(() => {
+//     const checkWishlist = async () => {
+//       const wishlist = await AsyncStorage.getItem('wishlist');
+//       if (wishlist) {
+//         const parsedWishlist = JSON.parse(wishlist);
+//         setIsInWishlist(parsedWishlist.some(item => item.id === destination.id));
+//       }
+//     };
+//     checkWishlist();
+//   }, [destination.id]);
+
+//   const toggleWishlist = async () => {
+//     try {
+//       const wishlist = await AsyncStorage.getItem('wishlist');
+//       let updatedWishlist = wishlist ? JSON.parse(wishlist) : [];
+      
+//       if (isInWishlist) {
+//         updatedWishlist = updatedWishlist.filter(item => item.id !== destination.id);
+//       } else {
+//         updatedWishlist.push({
+//           id: destination.id,
+//           name: destination.name,
+//           image: destination.baseImages[0],
+//           location: destination.location
+//         });
+//       }
+      
+//       await AsyncStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+//       setIsInWishlist(!isInWishlist);
+//     } catch (error) {
+//       console.error('Error updating wishlist', error);
+//     }
+//   };
+
+//   return (
+//     <TouchableOpacity
+//       style={styles.card}
+//       onPress={() => navigation.navigate('Slug', { destination })}
+//     >
+//       <Image source={{ uri: destination.baseImages[0] }} style={styles.image} />
+//       <View style={styles.textContainer}>
+//         <Text style={styles.title}>{destination.name}</Text>
+//         <Text style={styles.subtitle}>{destination.location}</Text>
+//       </View>
+      
+//       <TouchableOpacity 
+//         style={styles.heartButton}
+//         onPress={(e) => {
+//           e.stopPropagation(); // Prevent card navigation
+//           toggleWishlist();
+//         }}
+//       >
+//         <Icon 
+//           name="heart" 
+//           size={24} 
+//           color={isInWishlist ? 'red' : '#ccc'} 
+//           style={styles.heartIcon}
+//         />
+//       </TouchableOpacity>
+//     </TouchableOpacity>
+//   );
+// };
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -171,25 +244,31 @@ const Card = ({ destination }) => {
   // Check if item is in wishlist on load
   useEffect(() => {
     const checkWishlist = async () => {
-      const wishlist = await AsyncStorage.getItem('wishlist');
-      if (wishlist) {
-        const parsedWishlist = JSON.parse(wishlist);
-        setIsInWishlist(parsedWishlist.some(item => item.id === destination.id));
+      try {
+        const wishlist = await AsyncStorage.getItem('wishlist');
+        if (wishlist) {
+          const parsedWishlist = JSON.parse(wishlist);
+          // Use destination._id if that's what you're storing
+          setIsInWishlist(parsedWishlist.some(item => item.id === destination._id));
+        }
+      } catch (error) {
+        console.error('Error checking wishlist', error);
       }
     };
     checkWishlist();
-  }, [destination.id]);
+  }, [destination._id]); // Make sure this matches your ID property
 
-  const toggleWishlist = async () => {
+  const toggleWishlist = async (e) => {
+    e.stopPropagation();
     try {
       const wishlist = await AsyncStorage.getItem('wishlist');
       let updatedWishlist = wishlist ? JSON.parse(wishlist) : [];
       
       if (isInWishlist) {
-        updatedWishlist = updatedWishlist.filter(item => item.id !== destination.id);
+        updatedWishlist = updatedWishlist.filter(item => item.id === destination._id);
       } else {
         updatedWishlist.push({
-          id: destination.id,
+          id: destination._id, // Make sure this matches your ID property
           name: destination.name,
           image: destination.baseImages[0],
           location: destination.location
@@ -216,13 +295,10 @@ const Card = ({ destination }) => {
       
       <TouchableOpacity 
         style={styles.heartButton}
-        onPress={(e) => {
-          e.stopPropagation(); // Prevent card navigation
-          toggleWishlist();
-        }}
+        onPress={toggleWishlist}
       >
         <Icon 
-          name="heart" 
+          name={isInWishlist ? "heart" : "heart-o"} 
           size={24} 
           color={isInWishlist ? 'red' : '#ccc'} 
           style={styles.heartIcon}
