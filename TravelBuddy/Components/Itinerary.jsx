@@ -204,7 +204,7 @@
 
 
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, StatusBar } from 'react-native';
 import axios from 'axios';
 
 const GEMINI_API_KEY = 'AIzaSyDGTWVqhotHfUgck1jzh5V2tuibdgqhvV4';
@@ -328,6 +328,7 @@ export default function Itinerary() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:StatusBar.currentHeight,
     flex: 1,
     backgroundColor: '#f8f9fa'
   },

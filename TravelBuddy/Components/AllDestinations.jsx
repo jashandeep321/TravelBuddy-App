@@ -50,7 +50,7 @@
 
 
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, Text } from 'react-native';
+import { ScrollView, StatusBar, StyleSheet, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Card from './Card'; // Import the Card component
 
@@ -138,6 +138,7 @@ const AllDestinations = () => {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:StatusBar.currentHeight,
     flex: 1,
     padding: 10,
   },
